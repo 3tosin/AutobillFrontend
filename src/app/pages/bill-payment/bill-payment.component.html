@@ -1,0 +1,35 @@
+<!-- bill-payment.component.html -->
+<form [formGroup]="billPaymentForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="account">Select Account</label>
+    <select id="account" formControlName="account">
+      <option *ngFor="let account of accounts" [value]="account">{{ account }}</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="category">Select Category</label>
+    <select id="category" formControlName="category">
+      <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="biller">Select Biller</label>
+    <select id="biller" formControlName="biller">
+      <option *ngFor="let biller of billers" [value]="biller">{{ biller }}</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="meterNo">Meter No</label>
+    <input id="meterNo" formControlName="meterNo" type="text" />
+  </div>
+
+  <div>
+    <label for="amount">Amount</label>
+    <input id="amount" formControlName="amount" type="number" />
+  </div>
+
+  <button type="submit">Continue</button>
+</form>
