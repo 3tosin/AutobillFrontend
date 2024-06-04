@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "bill-payment-app": {
+    "autobill_frontend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/bill-payment-app",
+            "outputPath": "dist/autobill_frontend",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -73,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "bill-payment-app:build:production"
+              "buildTarget": "autobill_frontend:build:production"
             },
             "development": {
-              "buildTarget": "bill-payment-app:build:development"
+              "buildTarget": "autobill_frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "bill-payment-app:build"
+            "buildTarget": "autobill_frontend:build"
           }
         },
         "test": {
@@ -108,5 +108,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "cec80980-30be-4575-8727-70c2f6872680"
   }
 }

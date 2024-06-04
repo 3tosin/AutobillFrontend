@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BillPaymentComponent } from './pages/bill-payment/bill-payment.component';
+import { HomeComponent } from './pages/home/home.component';
+import { AutoBillDashboardComponent } from './pages/auto-bill-dashboard/auto-bill-dashboard.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' }, // Default route
   {
-    path : 'billpayment',
-    component : BillPaymentComponent
-  }
+    path: 'home',
+    component: HomeComponent,
+  },
+  { path: 'dashboard', component: AutoBillDashboardComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
