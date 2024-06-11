@@ -1,0 +1,58 @@
+.bg-gray-900 {
+    background-color: #181820;
+  }
+  .text-white {
+    color: white;
+  }
+  .text-orange-500 {
+    color: #ff8c00;
+  }
+  .bg-gray-800 {
+    background-color: #1F2937;
+  }
+  .border-custom-border {
+    border-color: #444;
+  }
+  
+  ion-footer {
+    border-bottom: none;
+    border-top: none;
+    border-width: 0;
+    box-shadow: none;
+    --ion-background-color: #181820;
+  }
+
+  ion-content{
+    --ion-background-color: #181820;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+  font-family: 'Inter', sans-serif;
+}
+
+ion-label {
+    --ion-font-family: 'Inter', sans-serif;
+  }
+
+  .font-inter {
+    font-family: 'Inter', sans-serif !important;
+    text-transform: none !important;
+  }
+
+  ion-item.custom-reset {
+    --background: transparent;
+    --highlight-background: transparent;
+    --inner-border-width: 0;
+    --border-width: 0;
+    --box-shadow: none;
+    --ion-item-background: transparent;
+    --ion-item-border-color: transparent;
+  }
+  
+
+
+
+
+
