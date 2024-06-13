@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,13 +15,15 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import { AutoBillDashboardComponent } from './pages/auto-bill-dashboard/auto-bill-dashboard.component' 
+// import { BillPaymentComponent } from './pages/bill-payment/bill-payment.component';
+import { BillPaymentComponent } from './pages/bill-payment/bill-payment.component';
+import { FormsModule } from '@angular/forms';
+import { ReviewsComponent } from './pages/reviews/reviews.component';
+import { PinConfirmationComponent } from './pages/pin-confirmation/pin-confirmation.component';
+
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    AutoBillDashboardComponent
-  ],
+  declarations: [AppComponent, HomeComponent, AutoBillDashboardComponent, BillPaymentComponent, ReviewsComponent, PinConfirmationComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -33,11 +36,10 @@ import { AutoBillDashboardComponent } from './pages/auto-bill-dashboard/auto-bil
     MatListModule,
     MatGridListModule,
     MatBottomSheetModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
-  providers: [
-    provideClientHydration(),
-    provideAnimationsAsync()
-  ],
-  bootstrap: [AppComponent]
+  providers: [provideClientHydration(), provideAnimationsAsync()],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

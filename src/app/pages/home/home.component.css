@@ -39,6 +39,10 @@ body {
   text-transform: none;
 }
 
+/* #fundaccount{
+  
+} */
+
 .shortcut-button {
   display: flex;
   flex-direction: column;

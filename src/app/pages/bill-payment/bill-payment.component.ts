@@ -1,30 +1,73 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component } from '@angular/core';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-bill-payment',
   templateUrl: './bill-payment.component.html',
   styleUrls: ['./bill-payment.component.css'],
 })
-export class BillPaymentComponent implements OnInit {
-  billPaymentForm!: FormGroup;
-  accounts = ['Account 1', 'Account 2', 'Account 3'];
-  categories = ['Electricity/Power', 'Water', 'Internet'];
-  billers = ['PAYORBORO', 'Biller 2', 'Biller 3'];
+export class BillPaymentComponent {
+  selectedPeriod: string = ''; 
+  startDate: string = ''; 
 
-  constructor(private fb: FormBuilder) {} 
+  selectedCategory: string | null = null;
+  selectedBiller: string | null = null;
+  selectedPackage: string | null = null;
+  smartCardNumber: string = '';
+  categories = ['Cable TV', 'Electricity and Water'];
+  billers: { [key: string]: string[] } = {
+    'Cable TV': ['DSTV'],
+    'Electricity and Water': ['IKEDC'],
+  };
+  packages: { [key: string]: string[] } = {
+    DSTV: ['DSTV Premium - ₦37,000'],
+  };
+  
 
-  ngOnInit(): void {
-    this.billPaymentForm = this.fb.group({
-      account: [''],
-      category: [''],
-      biller: [''],
-      meterNo: [''],
-      amount: [''],
+  constructor(private location: Location, private router: Router) {}
+
+  onCategoryChange(event: Event) {
+    const target = event.target as HTMLSelectElement;
+    this.selectedCategory = target.value;
+    this.selectedBiller = null;
+    this.selectedPackage = null;
+  }
+
+  onBillerChange(event: Event) {
+    const target = event.target as HTMLSelectElement;
+    this.selectedBiller = target.value;
+    this.selectedPackage = null;
+  }
+
+  onPackageChange(event: Event) {
+    const target = event.target as HTMLSelectElement;
+    this.selectedPackage = target.value;
+  }
+
+  onSmartCardNumberChange(event: Event) {
+    const target = event.target as HTMLInputElement;
+    this.smartCardNumber = target.value;
+  }
+
+  goBack() {
+    this.location.back();
+  }
+
+  onSubmit() {
+    this.router.navigate(['/reviews'], {
+      state: {
+        category: this.selectedCategory,
+        biller: this.selectedBiller,
+        package: this.selectedPackage,
+        smartCardNumber: this.smartCardNumber,
+      },
     });
   }
 
-  onSubmit(): void {
-    console.log(this.billPaymentForm.value);
+  selectPeriod(period: string) {
+    this.selectedPeriod = period;
   }
+
+
 }
