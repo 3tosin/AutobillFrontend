@@ -1,0 +1,145 @@
+
+.bill-payment-container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.bill-payment-container h1 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.period-options {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.period-option {
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #181820;
+  cursor: pointer;
+}
+
+.period-option.selected {
+  background-color: #f7551d; 
+  color: white;
+  border: 1px solid #f7551d;
+}
+
+
+.category-selection,
+.period-selection,
+.date-selection {
+  margin-bottom: 20px;
+}
+
+.category-select,
+.date-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #333;
+  color: white;
+}
+
+.period-options {
+  display: flex;
+  justify-content: space-around;
+}
+
+.period-option {
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #1F2229;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.period-option.selected {
+  background-color: #f97316; 
+  color: white;
+  border: 1px solid #f97316;
+}
+
+.date-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.date-input {
+  width: 100%;
+  padding: 10px;
+  padding-right: 40px; 
+  border: 0.5px solid #ccc;
+  border-radius: 5px;
+  background-color: #1F2229;
+  color: white;
+  appearance: none; 
+}
+
+.date-input::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+.date-icon {
+  position: absolute;
+  right: 10px;
+  font-size: 1.5em;
+  color: #181820;
+  pointer-events: none; 
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #F7551D;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+
+button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #F7551D;
+}

@@ -1,0 +1,87 @@
+body {
+  background-color: grey;
+  color: black;
+}
+
+.toolbar {
+  background-color: #292929;
+  color: #FFFFFF;
+}
+
+.container {
+  padding: 16px;
+  background-color: #121212;
+  min-height: calc(100vh - 112px); /* Adjust for toolbar and bottom nav height */
+  box-sizing: border-box;
+}
+
+.mat-card {
+  background-color: #1E1E1E;
+  color: #FFFFFF;
+  margin-bottom: 16px;
+  padding: 16px;
+}
+
+.info-card .info-row, .account-card .account-row, .balance-row, .transaction-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.actions-row, .shortcuts-row {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 16px;
+}
+
+.action-button, .shortcut-button {
+  color: #FFFFFF;
+  text-transform: none;
+}
+
+/* #fundaccount{
+  
+} */
+
+.shortcut-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #FFFFFF;
+}
+
+.shortcut-button mat-icon {
+  margin-bottom: 4px;
+}
+
+.transaction-card .transaction-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.transaction-item {
+  display: flex;
+  align-items: center;
+}
+
+.transaction-details {
+  margin-left: 16px;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background-color: #292929;
+  padding: 10px 0;
+}
+
+.bottom-nav-button {
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -1,0 +1,83 @@
+<div
+  class="bg-[#181820] text-white min-h-screen font-inter text-base font-medium flex flex-col"
+>
+  <!-- Header -->
+  <div class="px-4 py-4 mt-10">
+    <button class="material-icons text-white" (click)="goBack()">
+      arrow_back
+    </button>
+  </div>
+  <header class="p-4 flex flex-row justify-between">
+    <p class="text-xl">Autobill</p>
+    <div class="flex-grow"></div>
+    <a href="#" class="text-orange-500 text-xl">History</a>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow flex flex-col p-4 space-y-4">
+    <!-- Search -->
+    <div class="w-full">
+      <input
+        type="text"
+        class="w-full p-2 rounded bg-gray-800 border border-custom-border"
+        placeholder="Search..."
+      />
+    </div>
+
+    <!-- Empty State -->
+    <div
+      class="text-center flex-grow flex flex-col items-center justify-center"
+    >
+      <img src="assets/Empty cart.svg" alt="Empty" class="mx-auto mb-4" />
+      <!-- <p>You currently have no recurring payments set up</p> -->
+    </div>
+  </main>
+
+  <!-- Add Button -->
+  <footer class="p-4 ml-60 mb-30">
+    <button (click)="openModal()"
+      class="bg-orange-600 text-white py-2 px-4 rounded-xl w-50  flex items-end justify-center"
+    >
+      <span class="material-icons">add</span> Add new bill
+    </button>
+
+    <!-- Modal-->
+
+<div *ngIf="isModalOpen" class="fixed inset-0 bg-black bg-opacity-50 flex items-end justify-center">
+  <div class="bg-[#1a1a2e] p-6 rounded-t-lg shadow-lg w-full md:w-3/4 lg:w-1/2">
+    <h2 class="text-lg text-white mb-4 font-inter">Select Payment Type</h2>
+    <div class="flex flex-col space-y-4">
+      <button class="flex items-center justify-between bg-[#181820] text-white py-3 px-4 rounded hover:bg-blue-600 transition-all duration-300" (click)="selectPaymentType('Bill Payment')">
+        <div class="flex items-center space-x-6">
+          <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect y="0.5" width="21" height="16" rx="1" fill="#F7551D"/>
+            <circle cx="11.25" cy="8.75" r="4.25" fill="#1B1E27"/>
+          </svg>
+          <span>Bill Payment</span>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+      <button class="flex items-center justify-between bg-[#181820] text-white py-3 px-4 rounded hover:bg-green-600 transition-all duration-300" (click)="selectPaymentType('Airtime Top Up')">
+        <div class="flex items-center space-x-6">
+          <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10.5 8.19231L21 0.5V16.5H0L10.5 8.19231Z" fill="#F7551D"/>
+          </svg>
+
+          <span>Airtime & Data Top Up</span>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+    <button class="mt-4 mb-9 bg-orange-500 text-white py-4 px-4 rounded-lg hover:bg-orange-600 transition-all duration-300 w-full" (click)="closeModal()">Close</button>
+  </div>
+</div>
+
+
+
+
+  </footer>
+</div>
