@@ -1,6 +1,9 @@
 {
   "routes": [
+    "/billpayment",
     "/dashboard",
-    "/home"
+    "/home",
+    "/pin-confirmation",
+    "/reviews"
   ]
 }
