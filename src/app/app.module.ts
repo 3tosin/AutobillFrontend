@@ -20,10 +20,12 @@ import { BillPaymentComponent } from './pages/bill-payment/bill-payment.componen
 import { FormsModule } from '@angular/forms';
 import { ReviewsComponent } from './pages/reviews/reviews.component';
 import { PinConfirmationComponent } from './pages/pin-confirmation/pin-confirmation.component';
+import { SchedulePaymentComponent } from './pages/schedule-payment/schedule-payment.component';
+
 
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, AutoBillDashboardComponent, BillPaymentComponent, ReviewsComponent, PinConfirmationComponent],
+  declarations: [AppComponent, HomeComponent, AutoBillDashboardComponent, BillPaymentComponent, ReviewsComponent, PinConfirmationComponent, SchedulePaymentComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

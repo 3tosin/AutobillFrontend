@@ -5,6 +5,7 @@ import { AutoBillDashboardComponent } from './pages/auto-bill-dashboard/auto-bil
 import { BillPaymentComponent } from './pages/bill-payment/bill-payment.component';
 import { ReviewsComponent } from './pages/reviews/reviews.component';
 import { PinConfirmationComponent } from './pages/pin-confirmation/pin-confirmation.component';
+import { SchedulePaymentComponent } from './pages/schedule-payment/schedule-payment.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Default route
@@ -24,6 +25,10 @@ const routes: Routes = [
   {
     path: 'pin-confirmation',
     component: PinConfirmationComponent,
+  },
+  {
+    path: 'schedule-payment',
+    component: SchedulePaymentComponent,
   },
 ];
 

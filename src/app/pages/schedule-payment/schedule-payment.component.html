@@ -1,0 +1,121 @@
+
+<div class="bg-[#181820] min-h-screen p-4">
+<div class="px-2 pt-6">
+    <svg (click)="goBack()" width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.292892 7.29289C-0.0976315 7.68342 -0.0976315 8.31658 0.292892 8.70711L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928932C7.68054 0.538408 7.04738 0.538408 6.65685 0.928932L0.292892 7.29289ZM19 7L1 7V9L19 9V7Z" fill="white"/>
+    </svg>
+  </div>
+
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-4xl font-semibold py-10 text-[#FFFFFF]">Schedule Payment</h1>
+    
+  </div>
+
+  <span class="mt-6 mb-8 text-xl text-[#989AA5]">Select Period</span>
+
+<div class="period-options mt-6 mb-6 flex flex-row space-x-5 align-center justify-center">
+    <button (click)="selectPeriod('5 min')" 
+          [ngClass]="{'selected': selectedPeriod === '3 min'}" 
+          class="period-option block h-20 w-1/4 mt-2 p-6 bg-[#2A2E37] text-white rounded-4xl justify-center align-center text-xl font-bold">3 Mins</button>
+  <button (click)="selectPeriod('5 min')" 
+          [ngClass]="{'selected': selectedPeriod === '5 min'}" 
+          class="period-option block h-20 w-1/4 mt-2 p-6 bg-[#2A2E37] text-white rounded-4xl justify-center align-center text-xl font-bold">5 Mins</button>
+  <button (click)="selectPeriod('weekly')" 
+          [ngClass]="{'selected': selectedPeriod === 'weekly'}" 
+          class="period-option block h-20 w-1/4 mt-2 p-6 bg-[#2A2E37] text-white rounded-4xl justify-center align-center text-xl font-bold">Weekly</button>
+  <button (click)="selectPeriod('monthly')" 
+          [ngClass]="{'selected': selectedPeriod === 'monthly'}" 
+          class="period-option block h-20 w-1/4 mt-2 p-6 bg-[#2A2E37] text-white rounded-4xl justify-center align-center text-xl font-bold">Monthly</button>
+  <button (click)="selectPeriod('quarterly')" 
+          [ngClass]="{'selected': selectedPeriod === 'quarterly'}" 
+          class="period-option block h-20 w-1/4 mt-2 p-6 bg-[#2A2E37] text-white rounded-4xl justify-center align-center text-xl font-bold">Quarterly</button>
+</div>
+
+<span class="text-[#989AA5] text-xl mb-4 mt-4">Start Date</span>
+<div class="date-selection bg-[#1F2229]">
+  <div class="date-input-wrapper bg-[#1F2229]">
+    <input type="date" id="start-date" [(ngModel)]="startDate" class="date-input bg-[#1F2229] text-[#FFFFFF] text-xl">
+    <span class="date-icon">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M5.99998 0.75C6.19889 0.75 6.38965 0.829018 6.53031 0.96967C6.67096 1.11032 6.74998 1.30109 6.74998 1.5V2.263C7.41198 2.25 8.14098 2.25 8.94298 2.25H13.056C13.859 2.25 14.588 2.25 15.25 2.263V1.5C15.25 1.30109 15.329 1.11032 15.4696 0.96967C15.6103 0.829018 15.8011 0.75 16 0.75C16.1989 0.75 16.3897 0.829018 16.5303 0.96967C16.671 1.11032 16.75 1.30109 16.75 1.5V2.327C17.01 2.347 17.256 2.372 17.489 2.403C18.661 2.561 19.61 2.893 20.359 3.641C21.107 4.39 21.439 5.339 21.597 6.511C21.75 7.651 21.75 9.106 21.75 10.944V13.056C21.75 14.894 21.75 16.35 21.597 17.489C21.439 18.661 21.107 19.61 20.359 20.359C19.61 21.107 18.661 21.439 17.489 21.597C16.349 21.75 14.894 21.75 13.056 21.75H8.94498C7.10698 21.75 5.65098 21.75 4.51198 21.597C3.33998 21.439 2.39098 21.107 1.64198 20.359C0.893976 19.61 0.561977 18.661 0.403977 17.489C0.250977 16.349 0.250977 14.894 0.250977 13.056V10.944C0.250977 9.106 0.250977 7.65 0.403977 6.511C0.561977 5.339 0.893976 4.39 1.64198 3.641C2.39098 2.893 3.33998 2.561 4.51198 2.403C4.74498 2.372 4.99198 2.347 5.25098 2.327V1.5C5.25098 1.30126 5.32986 1.11065 5.47029 0.970023C5.61073 0.8294 5.80124 0.750265 5.99998 0.75ZM4.70998 3.89C3.70498 4.025 3.12498 4.279 2.70198 4.702C2.27898 5.125 2.02498 5.705 1.88998 6.711C1.86698 6.881 1.84798 7.061 1.83198 7.25H20.168C20.152 7.06 20.133 6.881 20.11 6.71C19.975 5.705 19.721 5.125 19.298 4.702C18.875 4.279 18.295 4.025 17.289 3.89C16.262 3.752 14.907 3.75 13 3.75H8.99998C7.09298 3.75 5.73898 3.752 4.70998 3.89ZM1.74998 11C1.74998 10.146 1.74998 9.403 1.76298 8.75H20.237C20.25 9.403 20.25 10.146 20.25 11V13C20.25 14.907 20.248 16.262 20.11 17.29C19.975 18.295 19.721 18.875 19.298 19.298C18.875 19.721 18.295 19.975 17.289 20.11C16.262 20.248 14.907 20.25 13 20.25H8.99998C7.09298 20.25 5.73898 20.248 4.70998 20.11C3.70498 19.975 3.12498 19.721 2.70198 19.298C2.27898 18.875 2.02498 18.295 1.88998 17.289C1.75198 16.262 1.74998 14.907 1.74998 13V11Z" fill="#989AA5"/>
+      </svg>
+    </span>
+  </div>
+</div>
+
+
+<div class="flex flex-row justify-between mt-4 mb-4">
+  <div class="text-[#989AA5] text-xl">End Date</div>
+  <svg id="toggleSvg" width="65" height="40" viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg" [class.toggled-on]="isEndDateToggled" (click)="toggleEndDate()">
+    <rect id="backgroundRect" width="75" height="40" rx="20" [ngClass]="{'toggled-on-bg': isEndDateToggled, 'toggled-off-bg': !isEndDateToggled}"/>
+    <circle id="movingCircle" cx="20" cy="20" r="14" fill="#FFFFFF"/>
+  </svg>
+</div>
+
+<div class="flex flex-row justify-between mt-4 mb-6">
+  <div class="text-[#989AA5] text-xl">Get Notified before payment</div>
+  <svg id="toggleSvg" width="65" height="40" viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg" [class.toggled-on]="isGetNotifiedToggled" (click)="toggleGetNotified()">
+    <rect id="backgroundRect" width="75" height="40" rx="20" [ngClass]="{'toggled-on-bg': isGetNotifiedToggled, 'toggled-off-bg': !isGetNotifiedToggled}"/>
+    <circle id="movingCircle" cx="20" cy="20" r="14" fill="#FFFFFF"/>
+  </svg>
+</div>
+
+
+  <div *ngIf="isGetNotifiedToggled" class="mb-4">
+    <label class="block text-white mb-2">Method</label>
+    <div class="relative inline-block w-full text-gray-700">
+      <select class="block appearance-none w-full bg-[#181820] border border-[#989AA5] text-white py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-gray-700 focus:border-gray-500"
+              [(ngModel)]="selectedMethod">
+        <option *ngFor="let method of methods" [value]="method">{{ method }}</option>
+      </select>
+      <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M7 10l5 5 5-5H7z"/></svg>
+      </div>
+    </div>
+  </div>
+
+<div *ngIf="isGetNotifiedToggled" class="text-[#989AA5] mb-2 mt-6 text-lg font-semibold">Reminder time before payment</div>
+<div *ngIf="isGetNotifiedToggled" class="period-options mt-10 mb-6 flex flex-row space-x-5 align-center justify-center">
+  <button (click)="remindPeriod('2')" 
+          [ngClass]="{'selected': reminderPeriod === '2'}" 
+          class="period-option block h-25 w-1/4 mt-2 p-6 bg-[#2A2E37] text-white rounded-5xl justify-center align-center text-xl font-bold">
+        <div>Every</div>
+        <div>2</div> Hours
+        </button>
+  <button (click)="remindPeriod('4')" 
+          [ngClass]="{'selected': reminderPeriod === '4'}" 
+          class="period-option block h-25 w-1/4 mt-2 p-6 bg-[#2A2E37] text-white rounded-5xl justify-center align-center text-xl font-bold">
+        <div>Every</div>
+        <div>4</div> Hours
+        </button>
+         <button (click)="remindPeriod('6')" 
+          [ngClass]="{'selected': reminderPeriod === '6'}" 
+          class="period-option block h-25 w-1/4 mt-2 p-6 bg-[#2A2E37] text-white rounded-5xl justify-center align-center text-xl font-bold">
+        <div>Every</div>
+        <div>6</div> Hours
+        </button>
+
+         <button (click)="remindPeriod('8')" 
+          [ngClass]="{'selected': reminderPeriod === '8'}" 
+          class="period-option block h-25 w-1/4 mt-2 p-6 bg-[#2A2E37] text-white rounded-5xl justify-center align-center text-xl font-bold">
+        <div>Every</div>
+        <div>8</div> Hours
+        </button>
+
+        <button (click)="remindPeriod('10')" 
+          [ngClass]="{'selected': reminderPeriod === '10'}" 
+          class="period-option block h-25 w-1/4 mt-2 p-6 bg-[#2A2E37] text-white rounded-5xl justify-center align-center text-xl font-bold">
+        <div>Every</div>
+        <div>10</div> Hours
+        </button>
+</div>
+
+ 
+ <div class="bottom-4 w-full flex justify-center">
+  <button (click)= "onSubmit()"
+          [disabled]="!allChoicesSelected()"
+          class="bg-[#F7551D] text-white text-4xl font-extrabold rounded disabled:opacity-50 disabled:cursor-not-allowed">
+    Confirm
+  </button>
+</div>
+</div>

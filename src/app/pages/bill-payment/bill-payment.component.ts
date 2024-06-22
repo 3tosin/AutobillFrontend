@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./bill-payment.component.css'],
 })
 export class BillPaymentComponent {
-  selectedPeriod: string = ''; 
-  startDate: string = ''; 
+  selectedPeriod: string = '';
+  startDate: string = '';
 
   selectedCategory: string | null = null;
   selectedBiller: string | null = null;
@@ -23,7 +23,6 @@ export class BillPaymentComponent {
   packages: { [key: string]: string[] } = {
     DSTV: ['DSTV Premium - ₦37,000'],
   };
-  
 
   constructor(private location: Location, private router: Router) {}
 
@@ -49,13 +48,22 @@ export class BillPaymentComponent {
     const target = event.target as HTMLInputElement;
     this.smartCardNumber = target.value;
   }
+  allChoicesSelected(): boolean {
+    return (
+      !!this.selectedCategory &&
+      !!this.selectedBiller &&
+      !!this.smartCardNumber &&
+      !!this.selectedPackage &&
+      !!this.selectedPeriod
+    );
+  }
 
   goBack() {
     this.location.back();
   }
 
   onSubmit() {
-    this.router.navigate(['/reviews'], {
+    this.router.navigate(['/schedule-payment'], {
       state: {
         category: this.selectedCategory,
         biller: this.selectedBiller,
@@ -68,6 +76,4 @@ export class BillPaymentComponent {
   selectPeriod(period: string) {
     this.selectedPeriod = period;
   }
-
-
 }
