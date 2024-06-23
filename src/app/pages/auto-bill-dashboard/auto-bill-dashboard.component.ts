@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { HistoryComponent } from '../history/history.component';
 
 @Component({
   selector: 'app-auto-bill-dashboard',
@@ -8,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./auto-bill-dashboard.component.css'],
   encapsulation: ViewEncapsulation.None,
 })
+
 export class AutoBillDashboardComponent {
   isModalOpen = false;
 
@@ -26,10 +28,10 @@ export class AutoBillDashboardComponent {
   }
 
   selectPaymentType(type: string) {
-    // console.log('Selected payment type:', type);
+    
     this.navigateToBillPayment();
     this.closeModal();
-    // You can navigate to another page or handle the selection here
+
   }
 
   navigateToBillPayment(): void {

@@ -6,6 +6,7 @@ import { BillPaymentComponent } from './pages/bill-payment/bill-payment.componen
 import { ReviewsComponent } from './pages/reviews/reviews.component';
 import { PinConfirmationComponent } from './pages/pin-confirmation/pin-confirmation.component';
 import { SchedulePaymentComponent } from './pages/schedule-payment/schedule-payment.component';
+import { HistoryComponent } from './pages/history/history.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Default route
@@ -29,6 +30,10 @@ const routes: Routes = [
   {
     path: 'schedule-payment',
     component: SchedulePaymentComponent,
+  },
+  {
+    path: 'history',
+    component: HistoryComponent,
   },
 ];
 

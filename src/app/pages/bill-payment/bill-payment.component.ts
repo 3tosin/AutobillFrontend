@@ -15,6 +15,7 @@ export class BillPaymentComponent {
   selectedBiller: string | null = null;
   selectedPackage: string | null = null;
   smartCardNumber: string = '';
+  smartCardNumberError: boolean = false;
   categories = ['Cable TV', 'Electricity and Water'];
   billers: { [key: string]: string[] } = {
     'Cable TV': ['DSTV'],
@@ -43,11 +44,18 @@ export class BillPaymentComponent {
     const target = event.target as HTMLSelectElement;
     this.selectedPackage = target.value;
   }
-
-  onSmartCardNumberChange(event: Event) {
+ onSmartCardNumberChange(event: Event): void {
     const target = event.target as HTMLInputElement;
-    this.smartCardNumber = target.value;
+    let value = target.value;
+
+    
+    value = value.replace(/\D/g, '').slice(0, 10);
+    target.value = value;
+
+    this.smartCardNumber = value;
+    this.smartCardNumberError = value.length !== 10;
   }
+
   allChoicesSelected(): boolean {
     return (
       !!this.selectedCategory &&

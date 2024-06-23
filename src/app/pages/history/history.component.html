@@ -1,0 +1,55 @@
+<div class="bg-[#181820] text-white min-h-screen p-4">
+<div class="px-2 pt-6">
+    <svg (click)="goBack()" width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.292892 7.29289C-0.0976315 7.68342 -0.0976315 8.31658 0.292892 8.70711L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928932C7.68054 0.538408 7.04738 0.538408 6.65685 0.928932L0.292892 7.29289ZM19 7L1 7V9L19 9V7Z" fill="white"/>
+    </svg>
+  </div>
+
+   <div class="flex justify-between items-center mb-6">
+
+    <h1 class="text-2xl font-semibold py-10">History</h1>
+    
+  </div>
+
+    <div class="flex items-center mb-4">
+      <input type="text" placeholder="Search..." class="flex-grow p-2 rounded bg-gray-800 text-gray-400">
+      <button class="ml-2 p-2 rounded bg-gray-800">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 12.414V18a1 1 0 01-.293.707l-3 3A1 1 0 018 21v-8.586l-7.707-7.707A1 1 0 013 4V4z" />
+        </svg>
+      </button>
+    </div>
+    <div>
+      <p class="text-gray-500 mb-2">Transaction History</p>
+      <div *ngFor="let transaction of transactions" class="bg-gray-800 p-4 rounded-lg mb-4 flex items-center" (click)="openTransactionDetail(transaction)">
+        <div class="bg-red-500 p-3 rounded-full mr-4">
+         
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h18M3 10h18M3 15h18M3 20h18" />
+          </svg>
+        </div>
+        <div class="flex-grow">
+          <p class="font-semibold">{{ transaction.title }}</p>
+          <p class="text-gray-400">{{ transaction.description }}</p>
+        </div>
+        <div class="text-right">
+          <p class="font-semibold">₦ {{ transaction.amount }}</p>
+          <p class="text-gray-400">From: {{ transaction.from }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div *ngIf="selectedTransaction" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center">
+    <div class="bg-gray-900 p-6 rounded-lg text-white max-w-sm w-full">
+      <h2 class="text-xl font-semibold mb-4">{{ selectedTransaction.title }}</h2>
+      <p class="mb-2">Amount: ₦ {{ selectedTransaction.amount }}</p>
+      <p>Description: {{ selectedTransaction.description }}</p>
+      <button (click)="closeTransactionDetail()" class="mt-4 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded">
+        Close
+      </button>
+    </div>
+  </div>
+

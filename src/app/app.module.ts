@@ -21,11 +21,22 @@ import { FormsModule } from '@angular/forms';
 import { ReviewsComponent } from './pages/reviews/reviews.component';
 import { PinConfirmationComponent } from './pages/pin-confirmation/pin-confirmation.component';
 import { SchedulePaymentComponent } from './pages/schedule-payment/schedule-payment.component';
+import { HistoryComponent } from './pages/history/history.component'
 
-
+import { HttpClientModule } from '@angular/common/http';
+import { TransactionService } from './Services/transaction.service';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, AutoBillDashboardComponent, BillPaymentComponent, ReviewsComponent, PinConfirmationComponent, SchedulePaymentComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    AutoBillDashboardComponent,
+    BillPaymentComponent,
+    ReviewsComponent,
+    PinConfirmationComponent,
+    SchedulePaymentComponent,
+    HistoryComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -40,8 +51,9 @@ import { SchedulePaymentComponent } from './pages/schedule-payment/schedule-paym
     MatBottomSheetModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [provideClientHydration(), provideAnimationsAsync()],
+  providers: [provideClientHydration(), provideAnimationsAsync(), TransactionService,],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
