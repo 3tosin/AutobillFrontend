@@ -1,20 +1,4 @@
 
-.bill-payment-container {
-  width: 100%;
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-}
-
-.bill-payment-container h1 {
-  margin-bottom: 20px;
-  text-align: center;
-  font-size: 24px;
-  color: #333;
-}
 
 .form-group {
   margin-bottom: 15px;
@@ -29,8 +13,8 @@
 
 .form-group input,
 .form-group textarea {
-  width: 100%;
-  padding: 8px;
+  width: 80%;
+  padding: 4px;
 }
 
 .form-group textarea {
@@ -66,7 +50,7 @@
 
 .category-select,
 .date-input {
-  width: 100%;
+  width: 80%;
   padding: 10px;
   border: 1px solid #989AA5;
   border-radius: 10px;
@@ -80,7 +64,7 @@
 }
 
 .period-option {
-  padding: 10px 20px;
+  /* padding: 10px 20px; */
   border: 1px solid #989AA5;
   border-radius: 10px;
   background-color: #1F2229;
@@ -102,13 +86,15 @@
 
 .date-input {
   width: 100%;
-  padding: 30px;
-  padding-right: 40px; 
-  border: 0.2px solid #989AA5;
+  padding: 14px;
+  /* padding-right: 40px;  */
+  /* border: 0.2px solid #989AA5; */
   border-radius: 10px;
   background-color: #1F2229;
   color: white;
   appearance: none; 
+  text-transform: uppercase;
+  font-size: 16px;
 }
 
 .date-input::-webkit-calendar-picker-indicator {
@@ -117,7 +103,7 @@
 
 .date-icon {
   position: absolute;
-  right: 10px;
+  right:30px;
   font-size: 1.5em;
   color: #181820;
   pointer-events: none; 

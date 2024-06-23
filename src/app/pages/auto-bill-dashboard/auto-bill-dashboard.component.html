@@ -34,12 +34,15 @@
   </main>
 
   <!-- Add Button -->
-  <footer class="p-4 ml-60 mb-30">
-    <button (click)="openModal()"
-      class="bg-orange-600 text-white py-2 px-4 rounded-xl w-50  flex items-end justify-center"
-    >
-      <span class="material-icons">add</span> Add new bill
-    </button>
+  <footer class="p-4 mb-30 pl-20 flex justify-end">
+    <button (click)="openModal()"class="bg-[#F7551D] px-4 py-4  text-white rounded-lg">
+      <div class="flex flex-row justify-center">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M22.1666 12.8335H15.1666V5.8335H12.8333V12.8335H5.83325V15.1668H12.8333V22.1668H15.1666V15.1668H22.1666V12.8335Z" fill="white"/>
+      </svg> 
+      Add new bill
+      </div>
+  </button>
 
     <!-- Modal-->
 
@@ -47,7 +50,7 @@
   <div class="bg-[#1a1a2e] p-6 rounded-t-lg shadow-lg w-full md:w-3/4 lg:w-1/2">
     <h2 class="text-lg text-white mb-4 font-inter">Select Payment Type</h2>
     <div class="flex flex-col space-y-4">
-      <button class="flex items-center justify-between bg-[#181820] text-white py-3 px-4 rounded hover:bg-blue-600 transition-all duration-300" (click)="selectPaymentType('Bill Payment')">
+      <button class="flex items-center justify-between bg-[#181820] text-white py-3 px-4 rounded " (click)="selectPaymentType('Bill Payment')">
         <div class="flex items-center space-x-6">
           <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect y="0.5" width="21" height="16" rx="1" fill="#F7551D"/>
@@ -59,7 +62,7 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
       </button>
-      <button class="flex items-center justify-between bg-[#181820] text-white py-3 px-4 rounded hover:bg-green-600 transition-all duration-300" (click)="selectPaymentType('Airtime Top Up')">
+      <button class="flex items-center justify-between bg-[#181820] text-white py-3 px-4 rounded transition-all duration-300" (click)="selectPaymentType('Airtime Top Up')">
         <div class="flex items-center space-x-6">
           <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M10.5 8.19231L21 0.5V16.5H0L10.5 8.19231Z" fill="#F7551D"/>
@@ -72,7 +75,7 @@
         </svg>
       </button>
     </div>
-    <button class="mt-4 mb-9 bg-orange-500 text-white py-4 px-4 rounded-lg hover:bg-orange-600 transition-all duration-300 w-full" (click)="closeModal()">Close</button>
+    <button class="mt-4 mb-9 bg-[#F7551D] text-white py-4 px-3 rounded-lg transition-all duration-300 w-full" (click)="closeModal()">Close</button>
   </div>
 </div>
 
