@@ -16,7 +16,7 @@ export class AutoBillDashboardComponent {
   constructor(private location: Location, private router: Router) {}
 
   goBack() {
-    this.location.back();
+    this.router.navigate(['/home']);
   }
 
   openModal() {

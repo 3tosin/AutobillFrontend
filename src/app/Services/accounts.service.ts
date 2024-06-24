@@ -21,17 +21,18 @@
 
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-// import { HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AccountService {
-  // constructor(private httpClient: HttpClient) {}
-  constructor () {}
+  private baseUrl = 'https://autobillbackend-o69q.onrender.com/api/';
+  
+ constructor(private http: HttpClient) { }
 
-  getAccountBalance(): Observable<number> {
-    // Simulate a call to the backend to fetch account balance
-    return of(913436472); // Replace with actual API call
+  getAccountBalance(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/accounts/1`);
   }
+
 }

@@ -9,12 +9,37 @@ import { ChangeDetectorRef } from '@angular/core';
   styleUrls: ['./schedule-payment.component.scss'],
 })
 export class SchedulePaymentComponent implements OnInit {
+  category: string | null = null;
+  biller: string | null = null;
+  package: string | null = null;
+  smartCardNumber: string = '';
+  price: string | null = null;
+  email: string = '';
+  password: string = '';
+  frequency: string = '';
+
   startDate: Date;
   selectedPeriod: string;
   reminderPeriod: string;
   cdr: any;
 
   constructor(private router: Router) {
+    const navigation = this.router.getCurrentNavigation();
+    const state = navigation?.extras.state as {
+      category: string;
+      biller: string;
+      package: string;
+      smartCardNumber: string;
+      price: string;
+    };
+    if (state) {
+      this.category = state.category;
+      this.biller = state.biller;
+      this.package = state.package;
+      this.smartCardNumber = state.smartCardNumber;
+      this.price = state.price;
+    }
+
     this.startDate = new Date();
 
     this.selectedPeriod = '';
@@ -61,7 +86,9 @@ export class SchedulePaymentComponent implements OnInit {
       this.isGetNotifiedToggled &&
       !!this.selectedMethod &&
       !!this.startDate &&
-      !!this.selectedPeriod
+      !!this.selectedPeriod &&
+      !!this.email &&
+      !!this.password
     );
   }
 
@@ -83,6 +110,16 @@ export class SchedulePaymentComponent implements OnInit {
           parsedStartDate.toISOString()
         );
         this.router.navigate(['/reviews'], {
+          state: {
+            category: this.category,
+            biller: this.biller,
+            package: this.package,
+            smartCardNumber: this.smartCardNumber,
+            price: this.price,
+            email: this.email,
+            password: this.password,
+            frequency: this.selectedPeriod,
+          },
           queryParams: { startDate: parsedStartDate.toISOString() },
         });
       } else {
@@ -94,7 +131,7 @@ export class SchedulePaymentComponent implements OnInit {
   }
 
   goBack() {
-    this.router.navigate(['billpayment']);
+    this.router.navigate(['/billpayment']);
   }
   ngOnInit() {}
 }

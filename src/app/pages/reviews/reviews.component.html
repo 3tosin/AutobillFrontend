@@ -29,7 +29,7 @@
           <span class="block text-lg justify-center items-center justify-self-center">0913436472</span>
           <span class="block text-gray-400 text-sm">From Current Account</span>
         </div>
-        <div class="text-xl font-bold justify-between px-4 mx-20 pl-20">₦83,512.88</div> 
+        <div class="text-xl font-bold justify-between px-4 mx-20 pl-20">&#x20A6;{{accountBalance}}</div> 
       </div>
     </div>
   </div>
@@ -68,7 +68,17 @@
 
     <div class="flex space-between justify-between flex-row mt-5 mb-3">
       <div>Price</div>
-      <div>{{Price}}</div>
+      <div>{{package}}</div>
+    </div>
+    <div class="mt-4">
+      <svg width="332" height="1" viewBox="0 0 332 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0.25" y1="0.75" x2="331.25" y2="0.750029" stroke="#989AA5" stroke-opacity="0.5" stroke-width="0.5"/>
+      </svg>
+    </div>
+
+    <div class="flex space-between justify-between flex-row mt-5 mb-3">
+      <div>Frequency</div>
+      <div>{{frequency}}</div>
     </div>
     <div class="mt-4">
       <svg width="332" height="1" viewBox="0 0 332 1" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -97,8 +107,18 @@
     </div>
 
     <div class="flex space-between justify-between flex-row mt-5 mb-3">
+      <div>Email Address</div>
+      <div>{{email}}</div>
+    </div>
+    <div class="mt-4">
+      <svg width="332" height="1" viewBox="0 0 332 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0.25" y1="0.75" x2="331.25" y2="0.750029" stroke="#989AA5" stroke-opacity="0.5" stroke-width="0.5"/>
+      </svg>
+    </div>
+
+    <div class="flex space-between justify-between flex-row mt-5 mb-3">
       <div>Total Debit</div>
-      <div># 37,258.5</div>
+      <div #totalDebitValue># 37,258.5</div>
     </div>
     <div class="mt-4">
       <svg width="332" height="1" viewBox="0 0 332 1" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -134,7 +154,7 @@
 </defs>
           </svg>
         </div>
-          <div class="text-2xl font-bold mt-4">&#x20A6;{{Price}}</div>
+          <div class="text-2xl font-bold mt-4">&#x20A6;{{package}}</div>
         </div>
         <h2 class="text-xl font-bold mt-4 mb-4">You have Successfully scheduled 
         <div>payment for DSTV Premium Package.</div></h2>
