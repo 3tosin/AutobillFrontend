@@ -71,7 +71,7 @@
       <input id="smartCardNumber" type="text" (input)="onSmartCardNumberChange($event)" class="block w-full mt-2 p-2 bg-[#2A2E37] text-white rounded"/>
     </div>
 
-<span class="mt-6 mb-8 text-[#989AA5]">Select Period</span>
+<!-- <span class="mt-6 mb-8 text-[#989AA5]">Select Period</span>
 
 <div class="period-options mt-6 mb-6 flex flex-row space-x-5 align-center justify-center">
   <button (click)="selectPeriod('weekly')" 
@@ -83,7 +83,7 @@
   <button (click)="selectPeriod('quarterly')" 
           [ngClass]="{'selected': selectedPeriod === 'quarterly'}" 
           class="period-option block h-20 w-1/4 mt-2 p-6 bg-[#2A2E37] text-white rounded-l justify-center align-center">Quarterly</button>
-</div>
+</div> -->
 
  <button [disabled]="!allChoicesSelected()" (click)="onSubmit()" class="block w-full mt-10 p-2 bg-[#f7551d] text-white rounded ">Schedule Payment</button>
 </div>

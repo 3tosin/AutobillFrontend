@@ -76,8 +76,8 @@ export class BillPaymentComponent {
       !!this.selectedCategory &&
       !!this.selectedBiller &&
       !!this.smartCardNumber &&
-      !!this.selectedPackage &&
-      !!this.selectedPeriod
+      !!this.selectedPackage 
+      // !!this.selectedPeriod
     );
   }
 

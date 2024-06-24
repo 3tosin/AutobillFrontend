@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TransactionService } from '../../Services/transaction.service';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common'
 
 interface Transaction {
   id: number;
@@ -20,7 +21,7 @@ export class HistoryComponent implements OnInit {
   transactions: Transaction[] = [];
   selectedTransaction: Transaction | null = null;
 
-  constructor(private transactionService: TransactionService, private router: Router) {}
+  constructor(private transactionService: TransactionService, private router: Router,) {}
 
   ngOnInit(): void {
     this.transactionService.getTransactions().subscribe((data) => {
