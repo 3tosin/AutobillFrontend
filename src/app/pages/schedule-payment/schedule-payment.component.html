@@ -78,38 +78,38 @@
         <option *ngFor="let method of methods" [value]="method">{{ method }}</option>
       </select>
       <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M7 10l5 5 5-5H7z"/></svg>
+        <svg class="fill-current h-4 w-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M7 10l5 5 5-5H7z"/></svg>
       </div>
     </div>
   </div>
 
 <div *ngIf="isGetNotifiedToggled" class="text-[#989AA5] mb-2 mt-6 text-lg font-semibold">Reminder time before payment</div>
-<div *ngIf="isGetNotifiedToggled" class="period-options mt-10 mb-6 flex flex-row space-x-2 align-center justify-center">
+<div *ngIf="isGetNotifiedToggled" class="period-options mt-10 mb-6 flex flex-row pr-4 space-x-2 align-center justify-center">
   <button (click)="remindPeriod('2')" 
           [ngClass]="{'selected': reminderPeriod === '2'}" 
-          class="period-option h-25  mt-2  bg-[#2A2E37] text-white rounded-5xl justify-center align-center text-xl font-bold">
+          class="period-option h-25 w-1/4 mt-2  bg-[#2A2E37] text-white rounded-5xl justify-center align-center text-xl font-bold">
         <div>Every</div>
         <div>2</div> Hours
         </button>
   <button (click)="remindPeriod('4')" 
           [ngClass]="{'selected': reminderPeriod === '4'}" 
-          class="period-option  h-25 mt-2 bg-[#2A2E37] text-white rounded-5xl justify-center align-center text-xl font-bold">
+          class="period-option w-1/4 h-25 mt-2 bg-[#2A2E37] text-white rounded-5xl justify-center align-center text-xl font-bold">
         <div>Every</div>
         <div>4</div> Hours
         </button>
          <button (click)="remindPeriod('6')" 
           [ngClass]="{'selected': reminderPeriod === '6'}" 
-          class="period-option h-25 mt-2  bg-[#2A2E37] text-white rounded-5xl justify-center align-center text-xl font-bold">
+          class="period-option w-1/4 h-25 mt-2  bg-[#2A2E37] text-white rounded-5xl justify-center align-center text-xl font-bold">
         <div>Every</div>
         <div>6</div> Hours
         </button>
-
+<!-- 
          <button (click)="remindPeriod('8')" 
           [ngClass]="{'selected': reminderPeriod === '8'}" 
-          class="period-option h-25  mt-2  bg-[#2A2E37] text-white rounded-5xl justify-center align-center text-xl font-bold">
+          class="period-option w-1/4 h-25  mt-2  bg-[#2A2E37] text-white rounded-5xl justify-center align-center text-xl font-bold">
         <div>Every</div>
         <div>8</div> Hours
-        </button>
+        </button> -->
 
         <!-- <button (click)="remindPeriod('10')" 
           [ngClass]="{'selected': reminderPeriod === '10'}" 

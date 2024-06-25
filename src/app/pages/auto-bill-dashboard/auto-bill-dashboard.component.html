@@ -1,6 +1,4 @@
-<div
-  class="bg-[#181820] text-white min-h-screen font-inter text-base font-medium flex flex-col "
->
+<div class="bg-[#181820] text-white min-h-screen font-inter text-base font-medium flex flex-col">
   <!-- Header -->
   <div class="px-4 py-4 mt-10">
     <button class="material-icons text-white" (click)="goBack()">
@@ -21,32 +19,67 @@
         type="text"
         class="w-full p-2 rounded bg-gray-800 border border-custom-border"
         placeholder="Search..."
+        [(ngModel)]="searchQuery"
+        (input)="searchTransactions()"
       />
     </div>
 
-    <!-- Empty State -->
-    <div
-      class="text-center flex-grow flex flex-col items-center justify-center"
-    >
-      <img src="assets/Empty cart.svg" alt="Empty" class="mx-auto mb-4" />
-      <!-- <p>You currently have no recurring payments set up</p> -->
+    <!-- Transaction List -->
+    <div *ngIf="!isLoading">
+      <div *ngIf="filteredTransactions.length > 0; else noPayments">
+        <p class="text-gray-500 mb-2">Active Recurring Payments</p>
+        <div *ngFor="let payment of filteredTransactions" class="bg-gray-800 p-4 rounded-lg mb-4 flex items-center justify-between">
+          <div class="flex items-center">
+            <div class="p-3 rounded-full mr-4">
+              <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 5.815C1 5.815 2.926 1 7.01875 1C11.1115 1 13.0375 5.815 13.0375 5.815C13.0375 5.815 11.1115 10.63 7.01875 10.63C2.926 10.63 1 5.815 1 5.815Z" stroke="#989AA5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M7.01869 7.23103C7.6835 7.23103 8.22244 6.59699 8.22244 5.81486C8.22244 5.03273 7.6835 4.39868 7.01869 4.39868C6.35388 4.39868 5.81494 5.03273 5.81494 5.81486C5.81494 6.59699 6.35388 7.23103 7.01869 7.23103Z" fill="#989AA5" stroke="#989AA5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold">{{ payment.title }}</p>
+              <p class="text-gray-400">{{ payment.description }}</p>
+              <p class="text-gray-400">{{ payment.date | date: 'MMM d, y, h:mm a' }}</p>
+              <p class="text-gray-400">From: {{ payment.from }}</p>
+            </div>
+          </div>
+          <div class="flex items-center space-x-4">
+            <p class="font-semibold">₦ {{ payment.amount }}</p>
+            <button (click)="cancelRecurringPayment(payment.id)" class="bg-[#F7551D] text-white py-2 px-4 rounded">Cancel</button>
+          </div>
+        </div>
+      </div>
+      <ng-template #noPayments>
+        <div class="text-center flex-grow flex flex-col items-center justify-center">
+          <img src="assets/Empty cart.svg" alt="Empty" class="mx-auto mb-4" />
+          <p>You currently have no recurring payments set up</p>
+        </div>
+      </ng-template>
+    </div>
+
+    <div *ngIf="selectedTransaction" class="fixed inset-0 bg-[#181820] bg-opacity-75 flex items-center justify-center">
+      <div class="bg-gray-900 p-6 rounded-lg text-white max-w-sm w-full">
+        <h2 class="text-xl font-semibold mb-4">{{ selectedTransaction.title }}</h2>
+        <p class="mb-2">Amount: ₦ {{ selectedTransaction.amount }}</p>
+        <p class="mb-2">Description: {{ selectedTransaction.description }}</p>
+        <p class="mb-2">Date: {{ selectedTransaction.date | date: 'MMM d, y, h:mm a' }}</p>
+        <p class="mb-2">From: {{ selectedTransaction.from }}</p>
+        <button (click)="closeTransactionDetail()" class="mt-4 bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded">Close</button>
+      </div>
     </div>
   </main>
 
   <!-- Add Button -->
   <footer class="p-4 mb-30 pl-20 flex justify-end">
-    <button (click)="openModal()"class="bg-[#F7551D] px-4 py-4  text-white rounded-lg">
+    <button (click)="openModal()" class="bg-[#F7551D] px-4 py-4 text-white rounded-lg">
       <div class="flex flex-row justify-center">
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M22.1666 12.8335H15.1666V5.8335H12.8333V12.8335H5.83325V15.1668H12.8333V22.1668H15.1666V15.1668H22.1666V12.8335Z" fill="white"/>
-      </svg> 
-      Add new bill
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22.1666 12.8335H15.1666V5.8335H12.8333V12.8335H5.83325V15.1668H12.8333V22.1668H15.1666V15.1668H22.1666V12.8335Z" fill="white"/>
+        </svg>
+        Add new bill
       </div>
-  </button>
-
-    <!-- Modal-->
-
-<div *ngIf="isModalOpen" class="fixed inset-0 bg-[#181820] bg-opacity-50 flex items-end justify-center">
+    </button>
+    <div *ngIf="isModalOpen" class="fixed inset-0 bg-[#181820] bg-opacity-50 flex items-end justify-center">
   <div class="bg-[#181820] p-6 rounded-t-lg shadow-lg w-full md:w-3/4 lg:w-1/2">
     <h2 class="text-lg text-white mb-4 font-inter">Select Payment Type</h2>
     <div class="flex flex-col space-y-4">
@@ -81,4 +114,3 @@
 
   </footer>
 </div>
-

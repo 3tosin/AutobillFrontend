@@ -15,8 +15,7 @@ interface Transaction {
   providedIn: 'root',
 })
 export class TransactionService {
-  private apiUrl =
-    'https://autobillbackend-o69q.onrender.com/api/recurringPayments';
+  private apiUrl = 'https://autobillbackend-o69q.onrender.com/api/recurringPayments';
   private email = 'mailteedee@gmail.com';
 
   constructor(private http: HttpClient) {}
@@ -27,5 +26,13 @@ export class TransactionService {
     });
     const url = `${this.apiUrl}?email=${this.email}`;
     return this.http.get<Transaction[]>(url, { headers });
+  }
+
+  cancelRecurringPayment(paymentId: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    const url = `${this.apiUrl}/${paymentId}`;
+    return this.http.delete<any>(url, { headers });
   }
 }

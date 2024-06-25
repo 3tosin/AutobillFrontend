@@ -2,8 +2,18 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { HistoryComponent } from '../history/history.component';
-import { RecurringPaymentService } from '../../Services/recurring-payment.service';
+import { AutobillDetailsService } from '../../Services/autobill-details.service';
 
+
+
+interface Transaction {
+  id: number;
+  title: string;
+  amount: number;
+  description: string;
+  date: string;
+  from: string;
+}
 
 @Component({
   selector: 'app-auto-bill-dashboard',
@@ -15,12 +25,17 @@ export class AutoBillDashboardComponent {
   payments: any[] = [];
   selectedPayment: any;
   isModalOpen: boolean = false;
+  transactions: Transaction[] = [];
+  filteredTransactions: Transaction[] = [];
+  selectedTransaction: Transaction | null = null;
+  searchQuery: string = '';
+  isLoading: boolean = true;
   // isModalOpen = false;
 
   constructor(
     private location: Location,
     private router: Router,
-    private recurringPaymentService: RecurringPaymentService
+    private autobillbillServiceDetails: AutobillDetailsService
   ) {}
 
   goBack() {
@@ -45,46 +60,76 @@ export class AutoBillDashboardComponent {
   }
 
   ngOnInit(): void {
-    this.fetchPayments();
+    this.loadTransactions();
   }
-
-  fetchPayments(): void {
-    this.recurringPaymentService.getRecurringPayments().subscribe(
-      (response) => {
-        this.payments = response;
+  loadTransactions(): void {
+    this.autobillbillServiceDetails.getTransactions().subscribe(
+      (data) => {
+        this.isLoading = false;
+        this.transactions = data;
+        this.filteredTransactions = data;
       },
       (error) => {
-        console.error('Error fetching payments:', error);
+        this.isLoading = false;
+        console.error('Error fetching transactions:', error);
       }
     );
   }
 
-  openPaymentDetails(payment: any): void {
-    this.recurringPaymentService.getPaymentDetails(payment.id).subscribe(
-      (response) => {
-        this.selectedPayment = response;
-        this.isModalOpen = true;
-      },
-      (error) => {
-        console.error('Error fetching payment details:', error);
-      }
-    );
+  openTransactionDetail(transaction: Transaction): void {
+    this.selectedTransaction = transaction;
   }
 
-
-
-  cancelPayment(): void {
-    this.recurringPaymentService
-      .cancelPayment(this.selectedPayment.id)
-      .subscribe(
-        (response) => {
-          console.log('Payment cancelled', response);
-          this.closeModal();
-          this.fetchPayments();
-        },
-        (error) => {
-          console.error('Error cancelling payment:', error);
-        }
+  closeTransactionDetail(): void {
+    this.selectedTransaction = null;
+  }
+  searchTransactions(): void {
+    if (this.searchQuery.trim() === '') {
+      this.filteredTransactions = this.transactions;
+    } else {
+      this.filteredTransactions = this.transactions.filter(
+        (transaction) =>
+          transaction.title
+            .toLowerCase()
+            .includes(this.searchQuery.toLowerCase()) ||
+          transaction.description
+            .toLowerCase()
+            .includes(this.searchQuery.toLowerCase()) ||
+          transaction.from
+            .toLowerCase()
+            .includes(this.searchQuery.toLowerCase()) ||
+          transaction.date
+            .toLowerCase()
+            .includes(this.searchQuery.toLowerCase())
       );
+    }
+  }
+
+  // cancelRecurringPayment(paymentId: number): void {
+  //   this.autobillbillServiceDetails.cancelRecurringPayment(paymentId).subscribe(
+  //     () => {
+  //       this.transactions = this.transactions.filter((transaction) => transaction.id !== paymentId);
+  //       this.filteredTransactions = this.filteredTransactions.filter((transaction) => transaction.id !== paymentId);
+  //     },
+  //     (error) => {
+  //       console.error('Error cancelling recurring payment:', error);
+  //     }
+  //   );
+  // }
+  cancelRecurringPayment(paymentId: number): void {
+    this.autobillbillServiceDetails.cancelRecurringPayment(paymentId).subscribe({
+      next: () => {
+        this.transactions = this.transactions.filter(
+          (transaction) => transaction.id !== paymentId
+        );
+        this.filteredTransactions = this.filteredTransactions.filter(
+          (transaction) => transaction.id !== paymentId
+        );
+      },
+      error: (error) => {
+        console.error('Error cancelling recurring payment:', error);
+      },
+    });
   }
 }
+
