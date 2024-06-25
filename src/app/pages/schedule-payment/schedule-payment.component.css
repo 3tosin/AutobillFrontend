@@ -139,10 +139,11 @@
 button {
   width: 90%;
   padding: 10px;
+  margin-top: 20px;
   background-color: #F7551D;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
 }

@@ -1,4 +1,4 @@
-<div class="bg-[#181820] text-white min-h-screen p-8">
+<div class="bg-[#181820] text-white min-h-screen p-8 font-inter">
 <div class="px-2 pt-6">
     <svg (click)="goBack()" width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0.292892 7.29289C-0.0976315 7.68342 -0.0976315 8.31658 0.292892 8.70711L6.65685 15.0711C7.04738 15.4616 7.68054 15.4616 8.07107 15.0711C8.46159 14.6805 8.46159 14.0474 8.07107 13.6569L2.41421 8L8.07107 2.34315C8.46159 1.95262 8.46159 1.31946 8.07107 0.928932C7.68054 0.538408 7.04738 0.538408 6.65685 0.928932L0.292892 7.29289ZM19 7L1 7V9L19 9V7Z" fill="white"/>
@@ -43,7 +43,7 @@
   </div>
 </div> -->
 
- <span class="text-[#989AA5] text-xl mb-4 mt-4">Email</span>
+ <!-- <span class="text-[#989AA5] text-xl mb-4 mt-4">Email</span>
     <div class="bg-[#1F2229] p-4 rounded-lg mb-6">
       <input type="email" [(ngModel)]="email" class="w-full bg-[#2A2E37] text-white p-2 rounded-lg" placeholder="Enter your email">
     </div>
@@ -51,7 +51,7 @@
     <span class="text-[#989AA5] text-xl mb-4 mt-4">Password</span>
     <div class="bg-[#1F2229] p-4 rounded-lg mb-6">
       <input type="password" [(ngModel)]="password" class="w-full bg-[#2A2E37] text-white p-2 rounded-lg" placeholder="Enter your password">
-    </div>
+    </div> -->
 
 <!-- <div class="flex flex-row justify-between mt-4 mb-4">
   <div class="text-[#989AA5] text-xl">End Date</div>
@@ -61,8 +61,8 @@
   </svg>
 </div> -->
 
-<div class="flex flex-row justify-between mt-4 mb-6">
-  <div class="text-[#989AA5] text-xl">Get Notified before payment</div>
+<div class="flex flex-row justify-between mt-8 mb-6">
+  <div class="text-[#989AA5] text-lg">Get Notified after payment</div>
   <svg id="toggleSvg" width="65" height="40" viewBox="0 0 80 40" fill="none" xmlns="http://www.w3.org/2000/svg" [class.toggled-on]="isGetNotifiedToggled" (click)="toggleGetNotified()">
     <rect id="backgroundRect" width="75" height="40" rx="20" [ngClass]="{'toggled-on-bg': isGetNotifiedToggled, 'toggled-off-bg': !isGetNotifiedToggled}"/>
     <circle id="movingCircle" cx="20" cy="20" r="14" fill="#FFFFFF"/>
@@ -70,7 +70,7 @@
 </div>
 
 
-  <div *ngIf="isGetNotifiedToggled" class="mb-4">
+  <div *ngIf="isGetNotifiedToggled" class="mb-8">
     <label class="block text-white mb-2">Method</label>
     <div class="relative inline-block w-full text-gray-700">
       <select class="block appearance-none w-full bg-[#181820] border border-[#989AA5] text-white py-2 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-gray-700 focus:border-gray-500"
@@ -123,6 +123,6 @@
  <div class="pt-20 w-full flex justify-center">
   <button (click)= "onSubmit()"
           [disabled]="!allChoicesSelected()"
-          class="bg-[#F7551D] text-white text-4xl font-extrabold rounded ">Confirm
+          class="bg-[#F7551D] text-white text-4xl font-extrabold rounded-xl ">Confirm
   </button>
 </div> 

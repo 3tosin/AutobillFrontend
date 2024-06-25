@@ -21,19 +21,38 @@ export class BillPaymentComponent {
   smartCardNumber: string = '';
   smartCardNumberError: boolean = false;
 
-  categories = ['Cable TV', 'Electricity and Water'];
+  categories = [
+    'Cable TV',
+    'Electricity and Water',
+    'Capital Markets & Investments',
+    'Education',
+    'Government Taxes and Levies',
+    'Insurance & HMO',
+    'Internet Subscription',
+    'Travel & Logistics',
+    'Utilities',
+  ];
   billers: { [key: string]: string[] } = {
-    'Cable TV': ['DSTV'],
+    'Cable TV': ['DSTV', 'Netflix', 'Prime Video', 'Showmax'],
     'Electricity and Water': ['IKEDC'],
   };
   packages: { [key: string]: string[] } = {
-    DSTV: ['DSTV Premium - ₦37,000'],
+    DSTV: [
+      'DSTV Premium - ₦37,000',
+      'DSTV Compact Plus',
+      'DSTV Confam',
+      'DSTV Yanga',
+    ],
   };
   price: { [key: string]: string[] } = {
-    DSTV: ['₦37,000'],
+    DSTV: ['₦37,000', '₦25,000', '₦15,700', '₦9,700'],
   };
 
-  constructor(private location: Location, private router: Router, private accountService: AccountService) {}
+  constructor(
+    private location: Location,
+    private router: Router,
+    private accountService: AccountService
+  ) {}
 
   onCategoryChange(event: Event) {
     const target = event.target as HTMLSelectElement;
@@ -58,7 +77,6 @@ export class BillPaymentComponent {
   onPriceChange(event: Event) {
     const target = event.target as HTMLSelectElement;
     this.selectedPrice = target.value;
-   
   }
   onSmartCardNumberChange(event: Event): void {
     const target = event.target as HTMLInputElement;
@@ -76,7 +94,7 @@ export class BillPaymentComponent {
       !!this.selectedCategory &&
       !!this.selectedBiller &&
       !!this.smartCardNumber &&
-      !!this.selectedPackage 
+      !!this.selectedPackage
       // !!this.selectedPeriod
     );
   }
@@ -102,11 +120,11 @@ export class BillPaymentComponent {
   selectPeriod(period: string) {
     this.selectedPeriod = period;
   }
- ngOnInit(): void {
-      this.accountService.getAccountBalance().subscribe((response) => {
-        this.data = response;
-        this.accountBalance = this.data.balance;
-        // console.log(this.data.balance);
-      });
+  ngOnInit(): void {
+    this.accountService.getAccountBalance().subscribe((response) => {
+      this.data = response;
+      this.accountBalance = this.data.balance;
+      // console.log(this.data.balance);
+    });
   }
 }

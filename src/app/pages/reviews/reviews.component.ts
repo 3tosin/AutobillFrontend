@@ -111,12 +111,11 @@ export class ReviewsComponent implements OnInit, AfterViewInit {
 
   onSubmit(): void {
     const payload = {
-      email: this.email,
       amount: this.amount,
       frequency: this.frequency,
       category: this.category,
       biller: this.biller,
-      password: this.password,
+  
       // Add other fields as needed
     };
 

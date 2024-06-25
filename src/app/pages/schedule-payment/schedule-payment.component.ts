@@ -85,10 +85,8 @@ export class SchedulePaymentComponent implements OnInit {
     return (
       this.isGetNotifiedToggled &&
       !!this.selectedMethod &&
-      !!this.startDate &&
-      !!this.selectedPeriod &&
-      !!this.email &&
-      !!this.password
+      !!this.selectedPeriod 
+      
     );
   }
 

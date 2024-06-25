@@ -7,11 +7,11 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class RecurringPaymentService {
+  private apiUrl = 'https://autobillbackend-o69q.onrender.com/api';
   private endpoint =
     'https://autobillbackend-o69q.onrender.com/api/recurringPayments';
 
   constructor(private http: HttpClient) {}
-
   postReviewData(payload: any): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -34,6 +34,17 @@ export class RecurringPaymentService {
     }
     console.error(errorMessage);
     return throwError(errorMessage);
+  }
+  getRecurringPayments(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/recurring-payments`);
+  }
+
+  getPaymentDetails(paymentId: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/recurring-payments/${paymentId}`);
+  }
+
+  cancelPayment(paymentId: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/recurring-payments/${paymentId}`);
   }
 }
 
