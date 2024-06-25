@@ -22,7 +22,7 @@ import { PinConfirmationComponent } from './pages/pin-confirmation/pin-confirmat
 import { SchedulePaymentComponent } from './pages/schedule-payment/schedule-payment.component';
 import { HistoryComponent } from './pages/history/history.component';
 import { TransactionService } from './Services/transaction.service';
-import { AutobillDetailsService } from './Services/autobill-details.service';
+// import { AutobillDetailsService } from './Services/autobill-details.service';
 import { RecurringPaymentService } from './Services/recurring-payment.service';
 
 @NgModule({
@@ -54,7 +54,7 @@ import { RecurringPaymentService } from './Services/recurring-payment.service';
   ],
   providers: [
     TransactionService,
-    AutobillDetailsService,
+    // AutobillDetailsService,
     RecurringPaymentService,
   ],
   bootstrap: [AppComponent],
